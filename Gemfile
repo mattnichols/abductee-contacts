@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -10,9 +10,10 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+# gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'haml-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -43,3 +44,8 @@ group :development, :test do
   gem 'spring'
 end
 
+# Add bootstrap-sass with rails generator
+gem 'bootstrap-sass', :git => 'https://github.com/mattnichols/bootstrap-sass.git', :branch => 'feature-rails-customization-generator'
+
+# For hosting on Heroku
+gem 'rails_12factor', :group => :production
