@@ -1,0 +1,9 @@
+%section.container.new_contact
+  %h2 Create new contact
+  = form_for @contact do |f|
+    %fieldset
+      .form-group
+        = f.label :email
+        = f.text_field :email, { class: "form-control" }
+
+      = f.submit class: "btn btn-primary"

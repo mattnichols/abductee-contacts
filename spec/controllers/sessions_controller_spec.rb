@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe SessionsController do
 	describe "Session Management" do
-		let(:user) { User.create(email: "unit@testing.com", password: "$3cr3t", password_confirmation: "$3cr3t") }
+		include AuthenticationHelpers
+		let(:user) { create_user }
 
 		it "should show login page" do
 			get :new
@@ -19,6 +20,14 @@ RSpec.describe SessionsController do
 			post :create, { email: user.email, password: "WRONG" }
 			expect(session[:user_id]).to be_nil
 			expect(response).to render_template("new")
+		end
+
+		it "should logout" do
+			login(user)
+			expect(session[:user_id]).not_to be_nil
+			
+			delete :destroy
+			expect(session[:user_id]).to be_nil
 		end
 	end
 end

@@ -1,25 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe ContactsController do
-	describe "GET index" do
-		let(:user) { User.create(email: "test@unit.com", password: "$3cr3t", password_confirmation: "$3cr3t") }
+	include AuthenticationHelpers
 
+	let(:user) { create_user }
+	before { login(user) }
+
+	describe "GET index" do
 		it "should render index view" do
-			session[:user_id] = user.id
-			
 			get :index
 			expect(response).to have_http_status(:success)
+			expect(response).to render_template(:index)
 		end
 
 		it "should load current user's contacts" do
 			user.contacts.create(email: "probed@abductee.com")
-			user.contacts.create(email: "probed@abductee.com")
-
-			session[:user_id] = user.id
+			user.contacts.create(email: "not.again@abductee.com")
 
 			get :index
 			expect(response).to have_http_status(:success)
 			expect(assigns(:contacts).length).to eq(2)
+		end
+	end
+
+	describe "GET new" do
+		it "should load new view" do
+			get :new
+			expect(response).to have_http_status(:success)
+			expect(assigns(:contact)).to be_a_new(Contact)
+			expect(response).to render_template(:new)
+		end
+	end
+
+	describe "POST create" do
+		it "should load new view" do
+			post :create, { contact: { email: "lab.rat@abductee.com" } }
+			expect(response).to redirect_to(contacts_path)
+			expect(assigns(:contact)).to be_valid
 		end
 	end
 end
