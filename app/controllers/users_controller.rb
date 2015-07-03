@@ -6,12 +6,17 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.create(params.require(:user).permit(:email, :password, :password_confirmation))
-		respond_to do |format|
-			format.html do
-				if @user.valid?
+		if @user.valid?
+			session[:user_id] = @user.id
+			respond_to do |format|
+				format.html do
 					flash[:info] = "User created!"
-					redirect_to root_path
-				else
+					redirect_to contacts_path
+				end
+			end
+		else
+			respond_to do |format|
+				format.html do
 					flash[:error] = "Unable to create user"
 					render "new"
 				end

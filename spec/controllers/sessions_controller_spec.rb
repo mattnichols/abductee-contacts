@@ -12,7 +12,7 @@ RSpec.describe SessionsController do
 		it "should login" do
 			post :create, { email: user.email, password: "$3cr3t" }
 			expect(session[:user_id]).to eq(user.id)
-			expect(response).to redirect_to(root_path)
+			expect(response).to redirect_to(contacts_path)
 		end
 
 		it "should fail incorrect login" do

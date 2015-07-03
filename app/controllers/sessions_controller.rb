@@ -6,7 +6,7 @@ class	SessionsController < ApplicationController
 		user = User.where(email: params[:email]).first
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, info: "Login successful"
+      redirect_to contacts_path, info: "Login successful"
     else
     	flash[:error] = "Invalid login"
       render "new"
