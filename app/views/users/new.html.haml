@@ -1,3 +1,15 @@
-%section
+%section.container
   %h2 Create a user account
-	
+  = form_for @user do |f|
+    %fieldset
+      .form-group
+        = f.label :email
+        = f.text_field :email, { class: "form-control" }
+      .form-group
+        = f.label :password
+        = f.password_field :password, { class: "form-control" }
+      .form-group
+        = f.label :password_confirmation, "Confirm Password"
+        = f.password_field :password_confirmation, { class: "form-control" }
+
+      = f.submit "Login", class: "btn btn-primary"

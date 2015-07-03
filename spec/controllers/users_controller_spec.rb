@@ -9,4 +9,19 @@ RSpec.describe UsersController do
 		end
 	end
 
+	describe "POST create" do
+		it "creates valid user" do
+			post :create, { user: { email: "test@unit.com", password: "SuperSecret", password_confirmation: "SuperSecret" } }
+			expect(assigns(:user)).to be_valid
+			expect(response).to redirect_to(root_path)
+		end
+
+		it "rejects invalid user" do
+			post :create, { user: { email: "test@unit.com", password: "SuperSecret", password_confirmation: "SuperDifferent" } }
+			expect(assigns(:user)).not_to be_valid
+			expect(response).to render_template("new")
+		end
+
+	end
+
 end

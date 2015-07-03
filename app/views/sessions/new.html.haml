@@ -1,0 +1,11 @@
+.container
+  = form_tag '/sessions' do
+    %fieldset
+      .form-group
+        %label{ for: "email" } Email
+        = text_field_tag :email, "", {class: "form-control"}
+      .form-group
+        %label{ for: "password" } Password
+        = password_field_tag :password, "", {class: "form-control"}
+      .form-group
+        = submit_tag "Login", class: "btn btn-primary"

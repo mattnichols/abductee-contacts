@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User do
 
-	describe "Authentication when using Mongoid" do
+	describe "authentication when using Mongoid" do
 
 		let(:user) { User.new(email: "test@unit.com", password: "$3cr3t", password_confirmation: "$3cr3t") }
 
@@ -24,4 +24,11 @@ RSpec.describe User do
 
 	end
 
+	describe "constraints" do
+		it "should validate email uniqueness" do
+			expect(User.create(email: "test@unit.com", password: "$3cr3t", password_confirmation: "$3cr3t")).to be_valid
+			expect(User.create(email: "test@unit.com", password: "$3cr3t", password_confirmation: "$3cr3t")).not_to be_valid
+		end
+
+	end
 end
