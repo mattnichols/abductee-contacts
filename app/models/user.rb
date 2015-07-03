@@ -8,4 +8,6 @@ class User
 
 	has_secure_password
 	validates_uniqueness_of :email
+
+	embeds_many :contacts
 end
