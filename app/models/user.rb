@@ -1,13 +1,19 @@
+require 'email_validator'
+
 class User
-	include Mongoid::Document
-	include ActiveModel::SecurePassword
+  include Mongoid::Document
+  include ActiveModel::SecurePassword
 
-	field :email, type: String
-	field :password_digest, type: String
-	field :_id, type: String, default: ->{ email }
+  field :email, type: String
+  field :password_digest, type: String
+  field :_id, type: String, default: ->{ email }
+  embeds_many :contacts
 
-	has_secure_password
-	validates_uniqueness_of :email
+  has_secure_password
 
-	embeds_many :contacts
+  validates :email,
+            :uniqueness => { :case_sensitive => false },
+            :presence => true,
+            :email => true
+
 end

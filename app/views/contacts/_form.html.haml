@@ -1,1 +1,5 @@
-form
+=form_for @contact, html: { class: "form-horizontal" } do |f|
+  = errors_for @contact
+  %fieldset
+    =render_text_field(f, :email)
+    =render_submit(f, "Create")

@@ -1,6 +1,12 @@
-class Contact
-	include Mongoid::Document
-	field :email, type: String
+require 'email_validator'
 
-	embedded_in :user
+class Contact
+  include Mongoid::Document
+  
+  field :email, type: String
+  embedded_in :user
+
+  validates :email,
+            :presence => true,
+            :email => true
 end

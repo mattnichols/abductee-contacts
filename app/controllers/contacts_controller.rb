@@ -18,7 +18,6 @@ class ContactsController < ApplicationController
 		else
 			respond_to do |format|
 				format.html do
-					flash[:error] = "Unable to create contact"
 					render "new"
 				end
 			end
