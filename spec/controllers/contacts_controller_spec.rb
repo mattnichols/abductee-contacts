@@ -21,6 +21,5 @@ RSpec.describe ContactsController do
 			expect(response).to have_http_status(:success)
 			expect(assigns(:contacts).length).to eq(2)
 		end
-
 	end
 end

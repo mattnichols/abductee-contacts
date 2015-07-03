@@ -20,6 +20,5 @@ RSpec.describe SessionsController do
 			expect(session[:user_id]).to be_nil
 			expect(response).to render_template("new")
 		end
-
 	end
 end
