@@ -13,7 +13,7 @@
   %body
     %header
       = render :partial => "layouts/header"
-    %main
+    %main.container
       %section#alerts
         -unless flash[:error].blank?
           %section.alert.alert-danger
