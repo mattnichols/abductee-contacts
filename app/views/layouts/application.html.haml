@@ -2,9 +2,32 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Abductees
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    %title Abductees - Contact Manager
+
+    %meta{ :name => "description", :content => "Contact Manager for Aliens" }
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1"}
+
+    = stylesheet_link_tag    'application', :media => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    %header
+      = render :partial => "layouts/header"
+    %main
+      %section#alerts
+        -unless flash[:error].blank?
+          %section.alert.alert-danger
+            = flash[:error]
+            
+        -unless flash[:info].blank?
+          %section.alert.alert-success
+            = flash[:info]
+
+      %section#content
+        = yield
+
+    %footer
+      %p
+        &copy;
+        = "#{Date.today.year}"
+        Alien Abducted Software, LLC.

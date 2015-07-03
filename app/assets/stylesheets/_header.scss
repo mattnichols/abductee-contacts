@@ -1,0 +1,19 @@
+/* Header Styles */
+
+body {
+	> header {
+		.navbar-header {
+			h1 {
+				margin: 0;
+				a {
+					color: $gray-darker;
+				}
+			}
+			img {
+				height: 60px;
+				float: left;
+				margin-right: 10px;
+			}
+		}
+	}
+}

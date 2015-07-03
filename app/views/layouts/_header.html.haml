@@ -1,0 +1,19 @@
+%header
+  %nav.navbar.navbar-default.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+        = image_tag "brand.svg", class: "image-responsive"
+        %h1.navbar-brand
+          = link_to root_path do
+            Abductee Contacts
+            
+        %button.navbar-toggle.collapsed{ type: "button", "data-toggle" => "collapse", "data-target" => "#main-navbar-collapse", "aria-expanded" => "false" }
+          %span.sr-only Toggle Navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+
+      .collapse.navbar-collapse#main-navbar-collapse
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to "Login", root_path
+          %li= link_to "Help", root_path
