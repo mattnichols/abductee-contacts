@@ -15,6 +15,13 @@
     .value
       =contact.email
 
+  -unless contact.phone.blank?
+    .field.phone
+      .label
+        Phone
+      .value
+        =contact.phone
+
   %address
     %h4 Address
     .field.address1
