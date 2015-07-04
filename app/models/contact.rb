@@ -2,7 +2,8 @@ require 'email_validator'
 
 class Contact
   include Mongoid::Document
-  
+  include Mongoid::Search
+
   field :email,       type: String
 	field :first_name,  type: String  
 	field :last_name,   type: String
@@ -13,11 +14,13 @@ class Contact
 	field :state,       type: String 
 	field :postal_code, type: String 
 
-  embedded_in :user
+  belongs_to :user
 
   validates :email,
             :presence => true,
             :email => true
+
+  search_in :first_name, :last_name, :email
 
   def title
   	# Try using name

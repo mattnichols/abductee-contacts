@@ -3,7 +3,11 @@ class ContactsController < ApplicationController
 	before_filter :load_contact, only: [:edit, :update, :destroy]
 	
 	def index
-		@contacts = current_user.contacts
+		if params[:q].blank?
+			@contacts = current_user.contacts
+		else
+			@contacts = current_user.contacts.full_text_search(params[:q])
+		end
 	end
 
 	def new

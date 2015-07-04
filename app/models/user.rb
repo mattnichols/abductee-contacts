@@ -7,7 +7,7 @@ class User
   field :email, type: String
   field :password_digest, type: String
   field :_id, type: String, default: ->{ email }
-  embeds_many :contacts
+  has_many :contacts
 
   has_secure_password
 
@@ -15,5 +15,4 @@ class User
             :uniqueness => { :case_sensitive => false },
             :presence => true,
             :email => true
-
 end

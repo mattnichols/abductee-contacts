@@ -69,6 +69,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.5.2)
+    fast-stemmer (1.0.2)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     haml (4.0.6)
@@ -105,6 +106,9 @@ GEM
       moped (~> 2.0.0)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
+    mongoid_search (0.3.2)
+      fast-stemmer (~> 1.0.0)
+      mongoid (>= 3.0.0)
     moped (2.0.6)
       bson (~> 3.0)
       connection_pool (~> 2.0)
@@ -213,6 +217,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mongoid
+  mongoid_search
   rails (= 4.2.3)
   rails_12factor
   rspec-rails

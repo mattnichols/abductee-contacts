@@ -19,6 +19,12 @@
             %li= link_to "Login", login_path
             %li= link_to "Signup", signup_path
           -else
+            %li
+              %form.form-inline{method: "get"}
+                .form-group
+                  %input{ type: "text", name: "q", id: "q", placeholder: "search...", class: "form-control" }
+                %button{ type: "submit", class: "btn btn-default" } Search
+
             %li.dropdown
               %a.dropdown-toggle{ href: "#", "data-toggle" => "dropdown", role: "button", "aria-haspopup" => "true", "aria-expanded" => "false" }
                 = current_user.email
