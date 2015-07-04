@@ -3,8 +3,6 @@ ruby '2.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Mongo DB Intergration
 gem 'mongoid'
 gem 'mongoid_search'
