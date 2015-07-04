@@ -12,7 +12,11 @@ The application is hosted on Heroku at https://abductee-contacts.herokuapp.com
 
 # TODO
 
-1. Add pagination
+1. Make email unique by user (currently global)
 1. Remove login form, move to header
+1. Make search dynamic
+1. Multiple phone numbers
+1. Multiple addresses
+1. Multiple emails1. Add pagination
 1. Dynamic add
 1. Dynamic edit
