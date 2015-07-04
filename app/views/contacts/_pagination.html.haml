@@ -1,0 +1,4 @@
+%nav
+  = paginate @contacts
+  .new_contact_button.pull-right.btn.btn-sm.btn-default
+    = link_to "Create Contact", new_contact_path

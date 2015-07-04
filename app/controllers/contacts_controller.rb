@@ -4,9 +4,9 @@ class ContactsController < ApplicationController
 	
 	def index
 		if params[:q].blank?
-			@contacts = current_user.contacts
+			@contacts = current_user.contacts.page(params[:page]).per(10)
 		else
-			@contacts = current_user.contacts.full_text_search(params[:q])
+			@contacts = current_user.contacts.full_text_search(params[:q]).page(params[:page]).per(10)
 		end
 	end
 

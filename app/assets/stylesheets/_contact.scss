@@ -1,45 +1,53 @@
 body {
-	article.contact {
-		header {
-			position: relative;
-			h2, h3 {
-				margin-top: 0;
-				width: 70%;
-			}
-			.ctrl {
-				display: inline;
-				position: absolute;
-				right: 0px;
-				top: 0px;
-			}
-		}
-
-		address {
-			.field.state,
-			.field.postal_code,
-			.field.city {
-				display: inline;
-				float: left;
-			}
-			h4 {
-				font-size: 1.1em;
-			}
-			overflow: hidden;
-			padding: 4px;
+	.contacts {
+		ul.pagination {
 			margin: 0;
 		}
-
-		.label {
-			color: $gray-darker;
-			font-size: 1em;
-			width: 100px;
+		.new_contact_button {
+			margin: 0px 0px 0px 0px;
 		}
+		article.contact {
+			header {
+				position: relative;
+				h2, h3 {
+					margin-top: 0;
+					width: 70%;
+				}
+				.ctrl {
+					display: inline;
+					position: absolute;
+					right: 0px;
+					top: 0px;
+				}
+			}
 
-		.value {
-			color: $gray-light;
-			display: inline;
-			font-size: 1em;
-			font-weight: 300;
+			address {
+				.field.state,
+				.field.postal_code,
+				.field.city {
+					display: inline;
+					float: left;
+				}
+				h4 {
+					font-size: 1.1em;
+				}
+				overflow: hidden;
+				padding: 4px;
+				margin: 0;
+			}
+
+			.label {
+				color: $gray-darker;
+				font-size: 1em;
+				width: 100px;
+			}
+
+			.value {
+				color: $gray-light;
+				display: inline;
+				font-size: 1em;
+				font-weight: 300;
+			}
 		}
 	}
 }

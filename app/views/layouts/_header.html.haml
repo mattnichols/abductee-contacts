@@ -21,8 +21,12 @@
           -else
             %li
               %form.form-inline{method: "get"}
-                .form-group
+                .input-group
                   %input{ type: "text", name: "q", id: "q", value: params[:q], placeholder: "search...", class: "form-control" }
+                  - unless params[:q].blank?
+                    %span.input-group-btn
+                      %button#search_reset.btn.btn-default{ type: "button" }
+                        %span.glyphicon.glyphicon-remove
                 %button{ type: "submit", class: "btn btn-default" } Search
 
             %li.dropdown

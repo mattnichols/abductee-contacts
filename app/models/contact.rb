@@ -3,6 +3,7 @@ require 'email_validator'
 class Contact
   include Mongoid::Document
   include Mongoid::Search
+  max_paginates_per 10
 
   field :email,       type: String
 	field :first_name,  type: String  
