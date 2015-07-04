@@ -37,4 +37,8 @@ class Contact
 
   	t
   end
+
+  def has_address?
+    [address1, address2, city, state, postal_code].any? { |address_value| not address_value.blank? }
+  end
 end

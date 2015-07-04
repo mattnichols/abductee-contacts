@@ -21,36 +21,36 @@
         Phone
       .value
         =contact.phone
-
-  %address
-    %h4 Address
-    .field.address1
-      .label
-        Address 1
-      .value
-        =contact.address1
-
-    -unless contact.address2.blank?
-      .field.address2
+  - if contact.has_address?
+    %address
+      %h4 Address
+      .field.address1
         .label
-          Address 2
+          Address 1
         .value
-          =contact.address2
+          =contact.address1
 
-    .field.city
-      .label
-        City
-      .value
-        =contact.city
+      -unless contact.address2.blank?
+        .field.address2
+          .label
+            Address 2
+          .value
+            =contact.address2
 
-    .field.state
-      .label
-        State
-      .value
-        =contact.state
+      .field.city
+        .label
+          City
+        .value
+          =contact.city
 
-    .field.postal_code
-      .label
-        Zip
-      .value
-        =contact.postal_code
+      .field.state
+        .label
+          State
+        .value
+          =contact.state
+
+      .field.postal_code
+        .label
+          Zip
+        .value
+          =contact.postal_code

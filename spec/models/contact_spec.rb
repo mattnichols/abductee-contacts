@@ -33,6 +33,21 @@ RSpec.describe Contact do
 			contact = create_contact(user, first_name: "Bob")
 			expect(contact.title).to eq("Bob")
 		end
+	end
+
+	describe "has_address" do
+		it "should be false if no address information" do
+			contact = Contact.new()
+			expect(contact.has_address?).to eq(false)
+		end
+
+		[:address1, :address2, :city, :state, :postal_code].each do |field|
+			it "should be true if #{field} is present" do
+				contact = Contact.new()
+				contact[field] = "value"
+				expect(contact.has_address?).to eq(true)
+			end
+		end
 
 	end
 end
