@@ -2,4 +2,11 @@
   = errors_for @contact
   %fieldset
     =render_text_field(f, :email)
-    =render_submit(f, "Create")
+    =render_text_field(f, :first_name)
+    =render_text_field(f, :last_name)
+    =render_text_field(f, :address1)
+    =render_text_field(f, :address2)
+    =render_text_field(f, :city)
+    =render_text_field(f, :state)
+    =render_text_field(f, :postal_code)
+    =render_submit(f, (@contact.new_record?) ? "Create" : "Update")

@@ -3,10 +3,34 @@ require 'email_validator'
 class Contact
   include Mongoid::Document
   
-  field :email, type: String
+  field :email,       type: String
+	field :first_name,  type: String  
+	field :last_name,   type: String
+	field :phone,       type: String
+	field :address1,    type: String 
+	field :address2,    type: String 
+	field :city,        type: String 
+	field :state,       type: String 
+	field :postal_code, type: String 
+
   embedded_in :user
 
   validates :email,
             :presence => true,
             :email => true
+
+  def title
+  	# Try using name
+  	t = last_name || ""
+  	unless first_name.blank?
+  		t += ((t.blank?) ? first_name : ", #{first_name}")
+	  end
+
+	  # User email if no name
+	  if t.blank?
+	  	t = email
+	  end
+
+  	t
+  end
 end

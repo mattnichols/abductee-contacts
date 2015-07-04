@@ -1,0 +1,48 @@
+body {
+	article.contact {
+		header {
+			position: relative;
+			h2, h3 {
+				margin-top: 0;
+				width: 70%;
+			}
+			.ctrl {
+				display: inline;
+				position: absolute;
+				right: 0px;
+				top: 0px;
+			}
+		}
+
+		address {
+			.field.state,
+			.field.postal_code,
+			.field.city {
+				display: inline;
+				float: left;
+			}
+			h4 {
+				font-size: 1.1em;
+			}
+			background-color: $gray-lighter;
+			border-radius: 4px;
+			overflow: hidden;
+			padding: 4px;
+			width: 80%;
+
+		}
+
+		.label {
+			color: $gray-darker;
+			font-size: 1em;
+			width: 100px;
+		}
+
+		.value {
+			color: $gray-light;
+			display: inline;
+			font-size: 1em;
+			font-weight: 300;
+		}
+	}
+}

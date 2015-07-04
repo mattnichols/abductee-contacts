@@ -1,2 +1,49 @@
-%article.contact.thumbnail
-	%h3= contact.email
+%article.contact.thumbnail.col-sm-12
+  %header
+    %h3= contact.title
+    %section.ctrl
+      %span.btn.btn-primary.btn-xs
+        = link_to edit_contact_path(contact) do
+          %span.glyphicon.glyphicon-cog
+      %span.btn.btn-primary.btn-xs
+        = link_to contact, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+          %span.glyphicon.glyphicon-trash
+
+  .field.email
+    .label
+      Email
+    .value
+      =contact.email
+
+  %address
+    %h4 Address
+    .field.address1
+      .label
+        Address 1
+      .value
+        =contact.address1
+
+    -unless contact.address2.blank?
+      .field.address2
+        .label
+          Address 2
+        .value
+          =contact.address2
+
+    .field.city
+      .label
+        City
+      .value
+        =contact.city
+
+    .field.state
+      .label
+        State
+      .value
+        =contact.state
+
+    .field.postal_code
+      .label
+        Zip
+      .value
+        =contact.postal_code
