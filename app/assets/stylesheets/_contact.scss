@@ -1,11 +1,20 @@
 body {
 	.contacts {
 		ul.pagination {
-			margin: 0;
+			margin: 0 0 10px 0;
 		}
-		.new_contact_button {
-			margin: 0px 0px 0px 0px;
+		nav.contacts_ctl {
+			height: 35px;
+			#search_form {
+				margin: 0 10px 0 0;
+				.input-group-btn .btn {
+					border-top-left-radius: 0;
+					border-bottom-left-radius: 0;
+					margin-left: -1px;
+				}
+			}
 		}
+
 		article.contact {
 			header {
 				position: relative;

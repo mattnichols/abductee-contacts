@@ -1,4 +1,8 @@
 %section.contacts
 	= render partial: "pagination"
-	= render @contacts
-	= render partial: "pagination"
+
+	#section#contacts
+		-if @contacts.empty?
+			%p No contacts found
+		-else
+			= render @contacts

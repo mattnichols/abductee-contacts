@@ -1,4 +1,21 @@
-%nav
+%nav.contacts_ctl.row
+  = form_tag("/contacts", method: "get", remote: true, class: "form form-inline col-xs-offset-10 col-xs-10", id: "search_form") do
+    .form-group
+      %label.sr-only{ for: "q" } Search Contacts
+      .input-group.input-group-sm
+        %input{ type: "search", name: "q", id: "q", value: params[:q], placeholder: "search...", class: "form-control" }
+        %span.hidden.input-group-btn#search_reset
+          %button.btn.btn-sm.btn-default{ type: "button" }
+            %span.glyphicon.glyphicon-remove
+        %span.input-group-btn#search_ready
+          %button.btn.btn-sm.btn-default{ type: "submit" }
+            %span.glyphicon.glyphicon-search
+
+  .col-xs-1.pull-right
+    .new_contact_button.btn.btn-sm.btn-primary.pull-right
+      = link_to new_contact_path do
+        .sr-only Create Contact
+        %span.glyphicon.glyphicon-plus
+.clearfix
+-unless @contacts.blank?
   = paginate @contacts
-  .new_contact_button.pull-right.btn.btn-sm.btn-default
-    = link_to "Create Contact", new_contact_path
