@@ -2,8 +2,7 @@ $(function() {
 
 	// Live Search behavior
 	$("#search_form input").typeWatch({
-	    callback: function (value) { 
-	    	console.log(this);
+	    callback: function (value) {
 	    	$(this).parents("form").submit();
 	    	setSearching(value != "");
 		  },
@@ -13,9 +12,9 @@ $(function() {
 	});
 
 	// Search reset button behavior
-	$("body").on("click", "#search_reset button", function(e){
+	$("#search_reset button").click(function(e) {
 		var form = $(this).parents("form");
-		var input = $(form).children("input");
+		var input = form.find("input[name='q']");
 		input.val("");
   	form.submit();
   	setSearching(false);
@@ -36,6 +35,6 @@ $(function() {
 	}
 
 	// Added to make pagiantor behave.
-	$("body").on("click", "a.disabled", function(e) { alert("click"); e.preventDefault(); });
+	$("body").on("click", "a.disabled", function(e) { e.preventDefault(); });
 	
 });

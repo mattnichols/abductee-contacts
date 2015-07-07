@@ -18,10 +18,11 @@ module FormHelpers
     end
   end
 
-  def render_submit(f, button_text)
+  def render_submit(f, button_text, &block)
     content_tag(:article, class: "form-group submit_button") do
       concat(content_tag(:div, class: "col-sm-offset-2 col-sm-10") do
         concat(f.submit button_text, class: "btn btn-primary")
+        yield if block
       end)
     end
   end

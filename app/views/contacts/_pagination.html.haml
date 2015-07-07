@@ -1,6 +1,6 @@
 %nav.contacts_ctl.row
-  = form_tag("/contacts", method: "get", remote: true, class: "form form-inline col-xs-offset-10 col-xs-10", id: "search_form") do
-    .form-group
+  = form_tag("/contacts", method: "get", remote: true, class: "form form-inline", id: "search_form") do
+    .form-group.col-xs-10.col-sm-4
       %label.sr-only{ for: "q" } Search Contacts
       .input-group.input-group-sm
         %input{ type: "search", name: "q", id: "q", value: params[:q], placeholder: "search...", class: "form-control" }
@@ -16,6 +16,8 @@
       = link_to new_contact_path do
         .sr-only Create Contact
         %span.glyphicon.glyphicon-plus
+
+  .col-xs-12.col-sm-7
+    -unless @contacts.blank?
+      = paginate @contacts
 .clearfix
--unless @contacts.blank?
-  = paginate @contacts

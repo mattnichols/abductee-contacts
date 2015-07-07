@@ -10,4 +10,6 @@
     =render_text_field(f, :city)
     =render_text_field(f, :state)
     =render_text_field(f, :postal_code)
-    =render_submit(f, (@contact.new_record?) ? "Create" : "Update")
+    =render_submit(f, (@contact.new_record?) ? "Create" : "Update") do
+      &nbsp;
+      = link_to "Cancel", contacts_path

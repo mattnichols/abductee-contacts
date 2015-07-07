@@ -4,7 +4,7 @@ body {
 			margin: 0 0 10px 0;
 		}
 		nav.contacts_ctl {
-			height: 35px;
+			height: 50px;
 			#search_form {
 				margin: 0 10px 0 0;
 				.input-group-btn .btn {
@@ -14,7 +14,6 @@ body {
 				}
 			}
 		}
-
 		article.contact {
 			header {
 				position: relative;
@@ -29,7 +28,6 @@ body {
 					top: 0px;
 				}
 			}
-
 			address {
 				.field.state,
 				.field.postal_code,
@@ -44,13 +42,11 @@ body {
 				padding: 4px;
 				margin: 0;
 			}
-
 			.label {
 				color: $gray-darker;
 				font-size: 1em;
 				width: 100px;
 			}
-
 			.value {
 				color: $gray-light;
 				display: inline;
