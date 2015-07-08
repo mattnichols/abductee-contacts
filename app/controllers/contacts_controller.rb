@@ -48,6 +48,7 @@ class ContactsController < ApplicationController
 		@contact.destroy
 		respond_to do |format|
 			format.html { redirect_to contacts_path, flash: { info: "Contact deleted" } }
+			format.js
 		end
 	end
 

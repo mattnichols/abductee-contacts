@@ -1,4 +1,4 @@
-%article.contact.thumbnail{ id: contact.id }
+%article.contact.thumbnail{ id: "contact_#{contact.id}" }
   %header.col-xs-12
     %h3= contact.title
     %section.ctrl
@@ -6,11 +6,11 @@
         = link_to edit_contact_path(contact) do
           %span.glyphicon.glyphicon-pencil
       %span.btn.btn-primary.btn-xs
-        = link_to contact, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+        = link_to contact, :method => :delete, :data => { :confirm => 'Are you sure?' }, :remote => true do
           %span.glyphicon.glyphicon-trash
 
   %address
-    %abbr{title: "main"}= "m."
+    %abbr{title: "email"}= "e."
     =link_to contact.email, "mailto:#{contact.email}"
     %br
 
