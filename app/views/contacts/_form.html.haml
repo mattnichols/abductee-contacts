@@ -16,7 +16,7 @@
             .col-xs-8.col-sm-7.col-sm-offset-2
               =p.text_field :phone, class: "form-control"
             .col-xs-3.col-sm-2
-              =p.select :phone_type, [:main, :office, :cell, :home, :other], {}, class: "form-control col-sm-2 col-md-2"
+              =p.select :phone_type, [:main, :office, :cell, :home, :other], { include_blank: true }, class: "form-control col-sm-2 col-md-2"
             -unless p.object.new_record?
               .col-xs-1
                 .btn.btn-danger.btn-circle

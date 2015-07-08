@@ -33,6 +33,7 @@ class Contact
   search_in :first_name, :last_name, :email
   
   before_save :set_title
+  before_save :cleanup_phone_numbers
 
   def has_address?
     [address1, address2, city, state, postal_code].any? { |address_value| not address_value.blank? }
@@ -44,7 +45,6 @@ class Contact
       errors.add(:first_name, "provide one")
       errors.add(:last_name, "provide one")
       errors.add(:email, "provide one")
-
     end
   end
 private
@@ -62,6 +62,12 @@ private
 	  end
     
   	self[:sorting_title] = (self[:title] = t).downcase unless t.nil?
+  end
+
+  def cleanup_phone_numbers
+    phone_numbers.each do |phone|
+      phone.destroy if phone.phone.blank?
+    end
   end
   
 end

@@ -55,4 +55,16 @@ RSpec.describe Contact do
 			end
 		end
 	end
+
+	describe "phone_numbers" do
+		let (:user) { create_user }
+
+		it "discarded if blank" do
+			contact = user.contacts.build(email: "valid@email.com")
+			contact.phone_numbers.build(phone_type: "home")
+			contact.save!
+
+			expect(contact.phone_numbers).to be_empty
+		end
+	end
 end
