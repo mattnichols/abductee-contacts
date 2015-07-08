@@ -31,8 +31,19 @@ module FormHelpers
     if object.errors.any?
       content_tag(:article, class: "form-group") do
         concat(content_tag(:div, class: "panel panel-danger") do
-          concat(content_tag(:div, class: "panel-body") do
+          concat(content_tag(:div, class: "panel-heading") do
             concat "#{object.class} has errors"
+          end)
+          concat(content_tag(:div, class: "panel-body") do
+            concat(content_tag(:ul) do
+              if object.errors[:base].any?
+                object.errors[:base].each do |e|
+                  concat(content_tag(:li, "#{e}"))
+                end
+              else
+                concat(content_tag(:li, "See errors below"))
+              end
+            end)
           end)
         end)
       end

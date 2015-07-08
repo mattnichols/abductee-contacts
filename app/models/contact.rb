@@ -12,6 +12,7 @@ class Contact
   
   # Phone Numbers
   embeds_many :phone_numbers
+  # validates_associated :phone_numbers
   accepts_nested_attributes_for :phone_numbers, allow_destroy: true
 
   # Address
@@ -25,12 +26,29 @@ class Contact
   belongs_to :user
   
   validates :email,
-            :presence => true,
+            :allow_blank => true,
             :email => true
+  validate :title_present
+
   search_in :first_name, :last_name, :email
   
   before_save :set_title
-  
+
+  def has_address?
+    [address1, address2, city, state, postal_code].any? { |address_value| not address_value.blank? }
+  end
+
+  def title_present
+    if ([first_name, last_name, email].all? { |field| field.blank? })
+      errors.add(:base, "Must provide email or name")
+      errors.add(:first_name, "provide one")
+      errors.add(:last_name, "provide one")
+      errors.add(:email, "provide one")
+
+    end
+  end
+private
+
   def set_title
   	# Try using name
   	t = last_name.blank? ? "" : last_name
@@ -46,7 +64,4 @@ class Contact
   	self[:sorting_title] = (self[:title] = t).downcase unless t.nil?
   end
   
-  def has_address?
-    [address1, address2, city, state, postal_code].any? { |address_value| not address_value.blank? }
-  end
 end
