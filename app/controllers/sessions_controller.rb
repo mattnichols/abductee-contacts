@@ -6,7 +6,7 @@ class	SessionsController < ApplicationController
 		user = User.where(email: params[:email]).first
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to contacts_path, info: "Login successful"
+      redirect_to contacts_path, flash: { info: "Login successful" }
     else
     	flash[:error] = "Invalid login"
       render "new"
@@ -15,6 +15,6 @@ class	SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path, info: "Logout successful"
+    redirect_to login_path, flash: { info: "Logout successful" }
   end
 end

@@ -9,8 +9,7 @@ class UsersController < ApplicationController
 			session[:user_id] = @user.id
 			respond_to do |format|
 				format.html do
-					flash[:info] = "User created!"
-					redirect_to contacts_path
+					redirect_to contacts_path, flash: { info: "Welcome!" } 
 				end
 			end
 		else
