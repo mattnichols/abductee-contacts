@@ -10,9 +10,10 @@
           %span.glyphicon.glyphicon-trash
 
   %address
-    %abbr{title: "email"}= "e."
-    =link_to contact.email, "mailto:#{contact.email}"
-    %br
+    -unless contact.email.blank?
+      %abbr{title: "email"}= "e."
+      =link_to contact.email, "mailto:#{contact.email}"
+      %br
 
     -contact.phone_numbers.each do |phone|
       %abbr{title: phone.phone_type}= "#{phone.phone_type[0]}."
