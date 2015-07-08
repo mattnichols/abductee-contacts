@@ -13,5 +13,6 @@ The application is hosted on Heroku at https://abductee-contacts.herokuapp.com
 # TODO
 
 1. Validate phone number
+1. Remote delete
 1. Dynamic add
 1. Dynamic edit
