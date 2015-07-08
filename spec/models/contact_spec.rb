@@ -15,7 +15,7 @@ RSpec.describe Contact do
 			expect(create_contact(user, email: "valid@email.com").errors).not_to include(:email)
 		end
 	end
-
+	
 	describe "title" do
 		let (:user) { create_user }
 
@@ -48,6 +48,5 @@ RSpec.describe Contact do
 				expect(contact.has_address?).to eq(true)
 			end
 		end
-
 	end
 end

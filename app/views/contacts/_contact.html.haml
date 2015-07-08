@@ -1,5 +1,5 @@
-%article.contact.thumbnail.col-sm-12{ id: contact.id }
-  %header
+%article.contact.thumbnail{ id: contact.id }
+  %header.col-xs-12
     %h3= contact.title
     %section.ctrl
       %span.btn.btn-primary.btn-xs
@@ -9,48 +9,23 @@
         = link_to contact, :method => :delete, :data => { :confirm => 'Are you sure?' } do
           %span.glyphicon.glyphicon-trash
 
-  .field.email
-    .label
-      Email
-    .value
-      =contact.email
+  %address
+    %abbr{title: "main"}= "m."
+    =link_to contact.email, "mailto:#{contact.email}"
+    %br
 
-  -unless contact.phone.blank?
-    .field.phone
-      .label
-        Phone
-      .value
-        =contact.phone
-  - if contact.has_address?
-    %address
+    -contact.phone_numbers.each do |phone|
+      %abbr{title: phone.phone_type}= "#{phone.phone_type[0]}."
+      =phone.phone
+      %br
+
+    - if contact.has_address?
       %h4 Address
-      .field.address1
-        .label
-          Address 1
-        .value
-          =contact.address1
+      =contact.address1
+      %br
 
       -unless contact.address2.blank?
-        .field.address2
-          .label
-            Address 2
-          .value
-            =contact.address2
+        =contact.address2
+        %br
 
-      .field.city
-        .label
-          City
-        .value
-          =contact.city
-
-      .field.state
-        .label
-          State
-        .value
-          =contact.state
-
-      .field.postal_code
-        .label
-          Zip
-        .value
-          =contact.postal_code
+      ="#{contact.city}, #{contact.state} #{contact.postal_code}"

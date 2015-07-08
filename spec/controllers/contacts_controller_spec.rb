@@ -84,6 +84,21 @@ RSpec.describe ContactsController do
 			put :update, id: contact, contact: { address1: "123 New Address" }
 			expect(response).to redirect_to(contacts_path)
 		end
+
+		it "should add phone numbers" do
+			put :update, id: contact, contact: { phone_numbers_attributes: [ { phone: "801-389-9876", phone_type: "cell" } ] }
+			phone_numbers = assigns(:contact).phone_numbers
+			expect(phone_numbers.count).to eq(1)
+			expect(phone_numbers.first.phone).to eq("801-389-9876")
+		end
+
+		it "should update phone numbers" do
+			phone = contact.phone_numbers.create(phone: "123-123-1234", phone_type: "main")
+			put :update, id: contact, contact: { phone_numbers_attributes: [ { id: phone.id, phone: "456-456-4567", phone_type: "cell" } ] }
+			phone_numbers = assigns(:contact).phone_numbers
+			expect(phone_numbers.count).to eq(1)
+			expect(phone_numbers.first.phone).to eq("456-456-4567")
+		end
 	end
 
 	describe "DELETE destroy" do

@@ -53,3 +53,6 @@ gem 'bootstrap-sass', :git => 'https://github.com/mattnichols/bootstrap-sass.git
 
 # For hosting on Heroku
 gem 'rails_12factor', :group => :production
+
+# For editing phone_numbers
+gem 'nested_form_fields'

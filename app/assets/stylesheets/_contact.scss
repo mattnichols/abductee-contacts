@@ -1,4 +1,19 @@
 body {
+	.btn-circle {
+	  width: 25px;
+	  height: 25px;
+	  text-align: center;
+	  padding: 4px 0 0px 1px;
+	  font-size: 11px;
+	  line-height: 1.428571429;
+	  border-radius: 15px;
+	}
+	.form-group {
+		.btn-circle {
+		  margin-top: 3px;
+		}
+	}
+	
 	.contacts {
 		ul.pagination {
 			margin: 0 0 10px 0;
@@ -29,27 +44,18 @@ body {
 				}
 			}
 			address {
-				.field.state,
-				.field.postal_code,
-				.field.city {
-					display: inline;
-					float: left;
-				}
 				h4 {
 					font-size: 1.1em;
 				}
-				overflow: hidden;
 				padding: 4px;
 				margin: 0;
 			}
 			.label {
 				color: $gray-darker;
 				font-size: 1em;
-				width: 100px;
 			}
 			.value {
 				color: $gray-light;
-				display: inline;
 				font-size: 1em;
 				font-weight: 300;
 			}
