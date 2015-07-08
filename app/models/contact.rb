@@ -46,22 +46,19 @@ class Contact
     end
   end
 
-
   def set_title
-    unless new_record?
-    	# Try using name
-    	t = last_name.blank? ? "" : last_name
-    	unless first_name.blank?
-    		t += ((t.blank?) ? first_name : ", #{first_name}")
-  	  end
-      
-  	  # User email if no name
-  	  if t.blank?
-  	  	t = email
-  	  end
-      
-    	self[:sorting_title] = (self[:title] = t).downcase
-    end
+  	# Try using name
+  	t = last_name.blank? ? "" : last_name
+  	unless first_name.blank?
+  		t += ((t.blank?) ? first_name : ", #{first_name}")
+	  end
+    
+	  # User email if no name
+	  if t.blank?
+	  	t = email
+	  end
+    
+  	self[:sorting_title] = (self[:title] = t).downcase unless t.nil?
   end
   
   def has_address?
