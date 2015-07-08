@@ -29,23 +29,8 @@ class Contact
             :email => true
   search_in :first_name, :last_name, :email
   
-  # Lazy phone number migration
-  after_initialize :migrate_phone_data
-
-  # Lazy migrate title sorting
-  after_initialize :set_title
   before_save :set_title
   
-  def migrate_phone_data
-    unless read_attribute(:phone).blank?
-      if phone_numbers.count > 0
-        phone_numbers.destroy_all
-      end
-      phone_numbers.create(phone: read_attribute(:phone), phone_type: "home")
-      remove_attribute(:phone)
-    end
-  end
-
   def set_title
   	# Try using name
   	t = last_name.blank? ? "" : last_name
