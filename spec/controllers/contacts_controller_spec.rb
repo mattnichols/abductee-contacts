@@ -22,6 +22,24 @@ RSpec.describe ContactsController do
 			expect(assigns(:contacts).length).to eq(2)
 		end
 
+		it "should sort contacts by title" do
+			c1 = user.contacts.create(email: "aaa@abductee.com")
+			c4 = user.contacts.create(email: "mmm.again@abductee.com")
+			c2 = user.contacts.create(email: "ggg@abductee.com")
+			c3 = user.contacts.create(email: "ddd.again@abductee.com", last_name: "Lucas", first_name: "George")
+			c5 = user.contacts.create(email: "bbb.again@abductee.com", last_name: "Solo")
+
+			get :index
+
+			contacts = assigns(:contacts)
+			
+			expect(contacts[0]).to eq(c1)
+			expect(contacts[1]).to eq(c2)
+			expect(contacts[2]).to eq(c3)
+			expect(contacts[3]).to eq(c4)
+			expect(contacts[4]).to eq(c5)
+		end
+
 		describe "searching user's contacts" do
 			before do
 				@user = login_new_user(email: "searchy@searcherson.com")

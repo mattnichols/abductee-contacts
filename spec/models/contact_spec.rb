@@ -33,6 +33,12 @@ RSpec.describe Contact do
 			contact = create_contact(user, first_name: "Bob")
 			expect(contact.title).to eq("Bob")
 		end
+
+		it "should give email if no name present" do
+			contact = create_contact(user, email: "bob@bob.com")
+			expect(contact.title).to eq("bob@bob.com")
+		end
+
 	end
 
 	describe "has_address" do

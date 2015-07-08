@@ -13,20 +13,7 @@ class Contact
   # Phone Numbers
   embeds_many :phone_numbers
   accepts_nested_attributes_for :phone_numbers, allow_destroy: true
-  
-  # Lazy phone number migration
-  after_initialize :migrate_phone_data
-  
-  def migrate_phone_data
-    unless read_attribute(:phone).blank?
-      if phone_numbers.count > 0
-        phone_numbers.destroy_all
-      end
-      phone_numbers.create(phone: read_attribute(:phone), phone_type: "home")
-      remove_attribute(:phone)
-    end
-  end
-  
+
   # Address
 	field :address1,    type: String 
 	field :address2,    type: String 
@@ -42,19 +29,39 @@ class Contact
             :email => true
   search_in :first_name, :last_name, :email
   
-  def title
-  	# Try using name
-  	t = last_name || ""
-  	unless first_name.blank?
-  		t += ((t.blank?) ? first_name : ", #{first_name}")
-	  end
-    
-	  # User email if no name
-	  if t.blank?
-	  	t = email
-	  end
-    
-  	t
+  # Lazy phone number migration
+  after_initialize :migrate_phone_data
+
+  # Lazy migrate title sorting
+  after_initialize :set_title
+  before_save :set_title
+  
+  def migrate_phone_data
+    unless read_attribute(:phone).blank?
+      if phone_numbers.count > 0
+        phone_numbers.destroy_all
+      end
+      phone_numbers.create(phone: read_attribute(:phone), phone_type: "home")
+      remove_attribute(:phone)
+    end
+  end
+
+
+  def set_title
+    unless new_record?
+    	# Try using name
+    	t = last_name.blank? ? "" : last_name
+    	unless first_name.blank?
+    		t += ((t.blank?) ? first_name : ", #{first_name}")
+  	  end
+      
+  	  # User email if no name
+  	  if t.blank?
+  	  	t = email
+  	  end
+      
+    	self[:sorting_title] = (self[:title] = t).downcase
+    end
   end
   
   def has_address?
